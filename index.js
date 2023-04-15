@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('*', async (req, res) => {
-  const CUR_PATH = req.originalUrl.slice(1)
+  const CUR_PATH = req.originalUrl.split("/")[1];
 
   const {data} = await openai.createCompletion({
     model: "text-davinci-003",
@@ -43,8 +43,6 @@ app.get('*', async (req, res) => {
     frequency_penalty: 0,
     presence_penalty: 0,
   });
-
-  console.log(data.choices)
 
   res.send(html_snippet + data.choices[0].text)
 })
