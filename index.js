@@ -16,12 +16,12 @@ URL_PATH = 'localhost:3000'
 const html_snippet = `
 <!doctype html>
 <html>
-<head><title>Generalized API</title></head>
+<head><title>Generalized</title></head>
 <body>
   <h1>`
 
 app.get('/', (req, res) => {
-  const html_home = `Welcome to the Generalized API</h1>
+  const html_home = `Welcome to the Generalized</h1>
 <p>This site is a one-stop-shop for all your information needs.  We have information on <a href="/health">health</a>, <a href="/finance">finance</a>, <a href="/technology">technology</a>, <a href="/sports">sports</a>, and more</p>`;
 
   res.send(html_snippet + html_home)
@@ -49,11 +49,12 @@ app.get('*', async (req, res) => {
 })
 
 async function generalized(CUR_PATH){
+  console.log('generalized');
   const generalized_prompt = `Create a response document with content that matches the URL path: ${URL_PATH}
 
 The first line is the Content-Type of the response.
 The following lines is the returned data.
-In the case of an HTML response, also add relative links to related topics.
+In the case of an HTML response, also add relative path links to related topics.
 
 Content-Type:
 `
@@ -78,9 +79,10 @@ Content-Type:
 }
 
 async function json(CUR_PATH){
+  console.log('json');
   const json_snippet = `
   {
-    "origin": "Generalized API",
+    "origin": "generalized",
   `;
 
   const json_prompt = `Create a JSON API response that matches ${URL_PATH}` + json_snippet;
@@ -100,7 +102,8 @@ async function json(CUR_PATH){
 }
 
 async function html(CUR_PATH){
-  const html_prompt = `Create a HTML document with content on ${URL_PATH}.  In a separate section also add relative links to related topics
+  console.log('html');
+  const html_prompt = `Create a HTML document with content on ${URL_PATH}.  In a separate section also add relative path links to related topics.
 
 ` + html_snippet;
 
