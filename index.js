@@ -20,11 +20,28 @@ const html_snippet = `
 <body>
   <h1>`
 
+const html_with_g_tag = `
+<!doctype html>
+<html>
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G2866C0GYE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G2866C0GYE');
+</script>
+<title>Generalized</title></head>
+<body>
+  <h1>`
+
 app.get('/', (req, res) => {
   const html_home = `Welcome to the Generalized</h1>
 <p>This site is a one-stop-shop for all your information needs.  We have information on <a href="/health">health</a>, <a href="/finance">finance</a>, <a href="/technology">technology</a>, <a href="/sports">sports</a>, and more</p>`;
 
-  res.send(html_snippet + html_home)
+  res.send(html_with_g_tag + html_home)
 })
 
 // JSON API
@@ -117,7 +134,7 @@ async function html(CUR_PATH){
     presence_penalty: 0,
   });
 
-  return html_snippet + data.choices[0].text
+  return html_with_g_tag + data.choices[0].text
 }
 
 app.listen(port, () => {
