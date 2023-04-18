@@ -1,4 +1,4 @@
-# GeneralizedAPI
+# Generalized
 
 Running at https://generalized.akrasia.dev
 
@@ -8,5 +8,5 @@ A website that uses AI to dynamically generate content pages.
 
 # Credit
 
-* LiveOverflow
 * Auto-GPT
+* LiveUnderflow
